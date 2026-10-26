@@ -1,0 +1,9 @@
+# Sadece site dosyaları yayınlanır; geri kalan her şey (psd, instagram, logolar, taslaklar) dışarıda kalır.
+/*
+!/.gitignore
+!/index.html
+!/styles.css
+!/script.js
+!/robots.txt
+!/_headers
+!/vercel.json

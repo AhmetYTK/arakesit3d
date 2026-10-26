@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo='; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; manifest-src 'self'; connect-src 'none'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>arakesit 3D — Mimarlık fakültesi öğrencileri için 3D baskı</title>
+  <meta name="description" content="Mimarlık fakültesi öğrencilerine özel 3D yazıcı hizmeti. Proje prototipleri, konsept modeller, arazi ve detay parçaları. 0.12 mm hassasiyet, 330 × 320 × 325 mm geniş baskı hacmi. Dosyanı Instagram'dan gönder.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="arakesit 3D — Tasarımın, katman katman.">
+  <meta property="og:description" content="Mimarlık fakültesi öğrencileri için 3D baskı hizmeti.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Crect x='8' y='20' width='16' height='3' rx='1' fill='%23fff'/%3E%3Crect x='10' y='15' width='12' height='3' rx='1' fill='%23fff' opacity='.75'/%3E%3Crect x='12' y='10' width='8' height='3' rx='1' fill='%23ff9f0a'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="top">
+    <nav class="nav__inner" aria-label="Ana menü">
+      <a href="#top" class="nav__logo">arakesit <span>3D</span></a>
+      <ul class="nav__links">
+        <li><a href="#hizmetler">Hizmetler</a></li>
+        <li><a href="#baski-alani">Baskı alanı</a></li>
+        <li><a href="#surec">Süreç</a></li>
+        <li><a href="#referanslar">Referanslar</a></li>
+        <li><a href="#sss">SSS</a></li>
+      </ul>
+      <a class="nav__cta" href="https://ig.me/m/arakesit3d" target="_blank" rel="noopener noreferrer">Bize yaz</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__text">
+        <p class="eyebrow">Mimarlık fakültesi öğrencileri için</p>
+        <h1 class="hero__title">Tasarımın.<br><span class="grad">Katman katman.</span></h1>
+        <p class="hero__sub">Prototipten final modele, teslimden önce elinde. Dosyanı gönder, gerisini biz halledelim.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="https://ig.me/m/arakesit3d" target="_blank" rel="noopener noreferrer">
+            <svg class="ico" aria-hidden="true"><use href="#ig"/></svg>
+            Instagram'dan yaz
+          </a>
+          <a class="btn btn--link" href="#referanslar">Referanslar <span aria-hidden="true">›</span></a>
+        </div>
+      </div>
+
+      <div class="hero__stage">
+        <canvas id="printer" aria-label="Bir ürün modelinin 3D yazıcıda katman katman basılmasını gösteren animasyon" role="img"></canvas>
+        <div class="hero__layer" aria-hidden="true"><span id="layer-num">000</span> / katman</div>
+      </div>
+
+      <ul class="stats">
+        <li><strong>0.12<small>mm</small></strong><span>katman hassasiyeti</span></li>
+        <li><strong>330<small>mm</small></strong><span>geniş baskı tablası</span></li>
+        <li><strong>%100</strong><span>öğrenci dostu fiyat</span></li>
+      </ul>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section section--gray" id="hizmetler">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--dark">Hizmetler</p>
+          <h2>Fikirden ürüne,<br>her aşamada.</h2>
+        </header>
+
+        <div class="bento">
+          <article class="card card--xl card--dark reveal">
+            <div class="card__body">
+              <p class="card__tag">En çok tercih edilen</p>
+              <h3>Prototip &amp; görsel modeller</h3>
+              <p>Form çalışmaları, ergonomi modelleri ve jüri sunumuna hazır ürün maketleri. Temiz yüzey, ince katman çizgileri.</p>
+            </div>
+            <svg class="card__art" viewBox="0 0 200 140" aria-hidden="true"><use href="#iso-tower"/></svg>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon" aria-hidden="true">◧</div>
+            <h3>Proje prototipleri</h3>
+            <p>Konsept kütle çalışmaları, ölçekli maket parçaları, cephe ve birleşim detayları.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon" aria-hidden="true">⚙︎</div>
+            <h3>Fonksiyonel parçalar</h3>
+            <p>Menteşe, geçme ve mekanizma parçaları. Gerçekten çalışan prototipler.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__icon" aria-hidden="true">◐</div>
+            <h3>Organik formlar</h3>
+            <p>Rhino'dan çıkan heykelsi ve akışkan formlar, parametrik yüzey ve kabuk modelleri.</p>
+          </article>
+
+          <article class="card card--accent reveal">
+            <div class="card__icon" aria-hidden="true">⚡︎</div>
+            <h3>Acil teslim baskısı</h3>
+            <p>Jüriye az mı kaldı? Önceliklendirilmiş baskı için hemen yaz.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BUILD VOLUME ============ -->
+    <section class="section section--dark volume" id="baski-alani">
+      <div class="wrap volume__grid">
+        <header class="reveal">
+          <p class="eyebrow">Geniş baskı hacmi</p>
+          <h2>Büyük fikirler<br>için <span class="grad">büyük alan.</span></h2>
+          <p class="section__lead">Parçaları bölmene gerek yok. Tek parça, tek baskı, daha sağlam sonuç.</p>
+          <dl class="volume__dims">
+            <div><dt>Genişlik</dt><dd>330<small>mm</small></dd></div>
+            <div><dt>Derinlik</dt><dd>320<small>mm</small></dd></div>
+            <div><dt>Yükseklik</dt><dd>325<small>mm</small></dd></div>
+          </dl>
+        </header>
+
+        <div class="volume__art reveal" aria-hidden="true">
+          <svg viewBox="0 0 320 280">
+            <defs>
+              <linearGradient id="vg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffb340"/><stop offset=".55" stop-color="#ff6b3d"/><stop offset="1" stop-color="#c86dd7"/>
+              </linearGradient>
+            </defs>
+            <g fill="none" stroke="url(#vg)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M160 40 270 90v110l-110 50-110-50V90z"/>
+              <path d="M160 40v110M50 90l110 60 110-60" opacity=".55"/>
+              <path d="M160 150v100" opacity=".55"/>
+            </g>
+            <g stroke="#6e6e73" stroke-width="1.2" fill="none">
+              <path d="M286 90v110M281 90h10M281 200h10"/>
+              <path d="M50 232l110 50M50 227v10M160 277v10" opacity="0"/>
+            </g>
+            <g font-size="12" fill="#a1a1a6" font-family="ui-monospace,Menlo,monospace">
+              <text x="296" y="150">325</text>
+              <text x="86" y="266" transform="rotate(26 86 266)">330</text>
+              <text x="212" y="262" transform="rotate(-26 212 262)">320</text>
+            </g>
+            <use href="#iso-tower" x="110" y="110" width="100" height="70" color="#f5f5f7"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section" id="surec">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--dark">Süreç</p>
+          <h2>Üç adımda<br>elinde.</h2>
+        </header>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num">01</span>
+            <h3>Dosyanı gönder</h3>
+            <p>Instagram'dan DM at. STL veya 3MF dosyanı ve istediğin boyutu ilet.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">02</span>
+            <h3>Fiyat &amp; onay</h3>
+            <p>Modelini kontrol eder, baskıya uygun olmayan yerleri söyler, net fiyat ve teslim tarihi veririz.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">03</span>
+            <h3>Bas &amp; teslim al</h3>
+            <p>Katman katman basılır, destekleri temizlenir ve teslime hazır şekilde eline ulaşır.</p>
+          </li>
+        </ol>
+
+        <div class="specs reveal">
+          <div><span>Hassasiyet</span><strong>0.12 mm katman</strong></div>
+          <div><span>Baskı hacmi</span><strong>330 × 320 × 325 mm</strong></div>
+          <div><span>Malzeme</span><strong>PLA · PETG</strong></div>
+          <div><span>Formatlar</span><strong>STL · 3MF</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COLORS ============ -->
+    <!-- NOT: Renk listesi örnektir. Stoktaki gerçek filament renkleriyle değiştir. -->
+    <section class="section section--gray colors" id="renkler">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--dark">Renkler</p>
+          <h2>Modelin, <br>senin rengin.</h2>
+          <p class="section__lead section__lead--dark">Mat ve temiz yüzeyli filamentlerle basıyoruz. İstediğin rengi sor, stokta yoksa getirtelim.</p>
+        </header>
+
+        <ul class="swatches reveal">
+          <li><span class="sw sw--white"></span><b>Beyaz</b></li>
+          <li><span class="sw sw--gray"></span><b>Gri</b></li>
+          <li><span class="sw sw--black"></span><b>Siyah</b></li>
+          <li><span class="sw sw--blue"></span><b>Mavi</b></li>
+          <li><span class="sw sw--green"></span><b>Yeşil</b></li>
+          <li><span class="sw sw--orange"></span><b>Turuncu</b></li>
+          <li><span class="sw sw--red"></span><b>Kırmızı</b></li>
+          <li><span class="sw sw--purple"></span><b>Mor</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ REFERENCES ============ -->
+    <!-- NOT: Aşağıdaki referanslar örnek/yer tutucudur. Gerçek işler ve Instagram gönderi linkleriyle değiştir. -->
+    <section class="section section--dark" id="referanslar">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow">Referanslar</p>
+          <h2>Bastıklarımız.<br><span class="muted">Konuşanlar onlar.</span></h2>
+          <p class="section__lead">Her işin hikâyesi Instagram'da. Yorumları oku, soru sor, bize oradan ulaş.</p>
+        </header>
+      </div>
+
+      <div class="refs" tabindex="0" role="region" aria-label="Referans projeler, yatay kaydırılabilir">
+        <article class="ref">
+          <div class="ref__art ref__art--a"><svg viewBox="0 0 200 140" aria-hidden="true"><use href="#iso-tower"/></svg></div>
+          <div class="ref__body">
+            <p class="ref__meta">Final model · Kulaklık kutusu</p>
+            <h3>Ses Cihazı Gövdesi</h3>
+            <blockquote>“Jüriden bir gün önce yazdım, sabah elimdeydi. Hocalar yüzey kalitesini sordu.”</blockquote>
+            <p class="ref__who">Elif K. — Endüstriyel tasarım 4. sınıf</p>
+            <a class="ref__link" href="https://instagram.com/arakesit3d" target="_blank" rel="noopener noreferrer">Instagram'da gör ›</a>
+          </div>
+        </article>
+
+        <article class="ref">
+          <div class="ref__art ref__art--b"><svg viewBox="0 0 200 140" aria-hidden="true"><use href="#iso-terrain"/></svg></div>
+          <div class="ref__body">
+            <p class="ref__meta">Form çalışması · Ergonomi</p>
+            <h3>El Aleti Prototipi</h3>
+            <blockquote>“Üç farklı sap formunu aynı hafta bastırıp elde denedim. Karar vermek çok kolaylaştı.”</blockquote>
+            <p class="ref__who">Can D. — Endüstriyel tasarım 3. sınıf</p>
+            <a class="ref__link" href="https://instagram.com/arakesit3d" target="_blank" rel="noopener noreferrer">Instagram'da gör ›</a>
+          </div>
+        </article>
+
+        <article class="ref">
+          <div class="ref__art ref__art--c"><svg viewBox="0 0 200 140" aria-hidden="true"><use href="#iso-blocks"/></svg></div>
+          <div class="ref__body">
+            <p class="ref__meta">Mekanizma · Geçme sistem</p>
+            <h3>Katlanır Masa Lambası</h3>
+            <blockquote>“Menteşeler gerçekten çalıştı. Fiyat da gerçekten öğrenci dostu.”</blockquote>
+            <p class="ref__who">Zeynep A. — Endüstriyel tasarım 2. sınıf</p>
+            <a class="ref__link" href="https://instagram.com/arakesit3d" target="_blank" rel="noopener noreferrer">Instagram'da gör ›</a>
+          </div>
+        </article>
+
+        <article class="ref">
+          <div class="ref__art ref__art--d"><svg viewBox="0 0 200 140" aria-hidden="true"><use href="#iso-tower"/></svg></div>
+          <div class="ref__body">
+            <p class="ref__meta">Organik form · Rhino</p>
+            <h3>Parametrik Kabuk</h3>
+            <blockquote>“Rhino'dan STL alıp gönderdim, karmaşık formu hatasız bastılar.”</blockquote>
+            <p class="ref__who">Mert Y. — Mimarlık yüksek lisans</p>
+            <a class="ref__link" href="https://instagram.com/arakesit3d" target="_blank" rel="noopener noreferrer">Instagram'da gör ›</a>
+          </div>
+        </article>
+
+        <a class="ref ref--more" href="https://instagram.com/arakesit3d" target="_blank" rel="noopener noreferrer">
+          <svg class="ico ico--lg" aria-hidden="true"><use href="#ig"/></svg>
+          <strong>Tüm işler<br>Instagram'da</strong>
+          <span>@arakesit3d ›</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section section--gray" id="sss">
+      <div class="wrap wrap--narrow">
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--dark">SSS</p>
+          <h2>Merak edilenler.</h2>
+        </header>
+
+        <div class="faq reveal">
+          <details name="faq">
+            <summary>Fiyat nasıl belirleniyor?</summary>
+            <div class="faq__body">
+              <p>Modelin boyutu, kullanılan malzeme miktarı ve baskı süresine göre. Dosyanı gönderdiğinde net fiyatı hemen söylüyoruz — sürpriz yok.</p>
+            </div>
+          </details>
+          <details name="faq">
+            <summary>Ne kadar sürede teslim ediliyor?</summary>
+            <div class="faq__body">
+              <p>Çoğu model 1–3 gün içinde hazır. Acil jüri teslimleri için önceliklendirme yapabiliyoruz, hemen yaz.</p>
+            </div>
+          </details>
+          <details name="faq">
+            <summary>Modelim baskıya uygun mu?</summary>
+            <div class="faq__body">
+              <p>Bilmiyorsan sorun değil. Kapalı hacimler, ölçek ve destek ihtiyacı gibi konuları biz kontrol eder, gerekirse düzeltme önerisi veririz.</p>
+            </div>
+          </details>
+          <details name="faq">
+            <summary>Hangi programlardan dosya kabul ediyorsunuz?</summary>
+            <div class="faq__body">
+              <p>Rhino, Fusion 360, SolidWorks, SketchUp, Blender… Hangisini kullanırsan kullan, STL veya 3MF olarak dışa aktarman yeterli.</p>
+            </div>
+          </details>
+          <details name="faq">
+            <summary>En büyük ne kadar basabiliyorsunuz?</summary>
+            <div class="faq__body">
+              <p>330 × 320 × 325 mm hacme kadar tek parça. Daha büyük modelleri parçalara bölerek bastırıp birleştirmene yardım ederiz.</p>
+            </div>
+          </details>
+          <details name="faq">
+            <summary>Randevu alabilir miyim?</summary>
+            <div class="faq__body">
+              <p>Online randevu sistemi çok yakında burada. Şimdilik Instagram'dan yazman yeterli.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="cta">
+      <div class="wrap reveal">
+        <h2>Teslim yaklaşıyor mu?<br><span class="grad">Hemen yaz.</span></h2>
+        <p>Dosyanı DM'den gönder, aynı gün dönüş yapalım.</p>
+        <a class="btn btn--primary btn--lg" href="https://ig.me/m/arakesit3d" target="_blank" rel="noopener noreferrer">
+          <svg class="ico" aria-hidden="true"><use href="#ig"/></svg>
+          DM'at
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p>© <span id="year">2026</span> arakesit 3D — Mimarlık fakültesi öğrencileri için 3D baskı.</p>
+      <p class="footer__brand">arakesit <span class="footer__accent">3D</span> bir <strong>Sameksan</strong> iştirakidir.</p>
+    </div>
+  </footer>
+
+  <!-- Mobilde sabit Instagram butonu -->
+  <a class="fab" href="https://ig.me/m/arakesit3d" target="_blank" rel="noopener noreferrer" aria-label="Instagram'dan mesaj gönder">
+    <svg class="ico" aria-hidden="true"><use href="#ig"/></svg>
+    <span>Instagram'dan yaz</span>
+  </a>
+
+  <!-- ============ SVG SPRITES ============ -->
+  <svg class="sprite" width="0" height="0" aria-hidden="true">
+    <symbol id="ig" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7.1.1 5.8.1 4.9.3 4.1.6c-.8.3-1.5.7-2.1 1.4C1.3 2.6.9 3.3.6 4.1.3 4.9.1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.2.6 2.9.3.8.7 1.5 1.4 2.1.7.7 1.3 1.1 2.1 1.4.8.3 1.6.5 2.9.6 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.3-.1 2.2-.3 2.9-.6.8-.3 1.5-.7 2.1-1.4.7-.7 1.1-1.3 1.4-2.1.3-.8.5-1.6.6-2.9.1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.2-.6-2.9-.3-.8-.7-1.5-1.4-2.1C21.4 1.3 20.7.9 19.9.6 19.1.3 18.2.1 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/>
+    </symbol>
+    <symbol id="iso-tower" viewBox="0 0 200 140">
+      <path d="M100 118 30 90l70-28 70 28z" fill="currentColor" opacity=".18"/>
+      <path d="M70 92V40l22-9v52z" fill="currentColor" opacity=".55"/>
+      <path d="M92 83V31l22 9v52z" fill="currentColor" opacity=".8"/>
+      <path d="M70 40l22-9 22 9-22 9z" fill="currentColor"/>
+      <path d="M114 100V72l28-11v28z" fill="currentColor" opacity=".55"/>
+      <path d="M142 89V61l14 6v28z" fill="currentColor" opacity=".8"/>
+      <path d="M114 72l28-11 14 6-28 11z" fill="currentColor"/>
+    </symbol>
+    <symbol id="iso-terrain" viewBox="0 0 200 140">
+      <path d="M100 120 25 90l75-30 75 30z" fill="currentColor" opacity=".2"/>
+      <path d="M100 108 45 86l55-22 55 22z" fill="currentColor" opacity=".38"/>
+      <path d="M100 96 62 81l38-15 38 15z" fill="currentColor" opacity=".58"/>
+      <path d="M100 84 78 75l22-9 22 9z" fill="currentColor" opacity=".8"/>
+      <path d="M100 74 90 70l10-4 10 4z" fill="currentColor"/>
+    </symbol>
+    <symbol id="iso-blocks" viewBox="0 0 200 140">
+      <path d="M100 120 25 90l75-30 75 30z" fill="currentColor" opacity=".18"/>
+      <path d="M50 88V66l18-7v22z" fill="currentColor" opacity=".55"/>
+      <path d="M68 81V59l18 7v22z" fill="currentColor" opacity=".8"/>
+      <path d="M50 66l18-7 18 7-18 7z" fill="currentColor"/>
+      <path d="M92 96V50l18-7v46z" fill="currentColor" opacity=".55"/>
+      <path d="M110 89V43l18 7v46z" fill="currentColor" opacity=".8"/>
+      <path d="M92 50l18-7 18 7-18 7z" fill="currentColor"/>
+      <path d="M128 104V86l18-7v18z" fill="currentColor" opacity=".55"/>
+      <path d="M146 97V79l18 7v18z" fill="currentColor" opacity=".8"/>
+      <path d="M128 86l18-7 18 7-18 7z" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
