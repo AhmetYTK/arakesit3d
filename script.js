@@ -45,6 +45,101 @@
     if (cta) new IntersectionObserver(([e]) => { ctaVisible = e.isIntersecting; update(); }, { threshold: 0.2 }).observe(cta);
   }
 
+  /* ---------- Referanslar: butonlar, fareyle sürükleme, 3D eğilme ---------- */
+  const track = $('#refs-track');
+  if (track) {
+    const btns = document.querySelectorAll('.refs__btn');
+    const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    // Bir kart + boşluk genişliği (kaydırma adımı)
+    const step = () => {
+      const card = track.querySelector('.ref');
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 20;
+      return card ? card.offsetWidth + gap : track.clientWidth * 0.8;
+    };
+    const maxScroll = () => track.scrollWidth - track.clientWidth;
+
+    // Buton durumları (başta / sonda pasif)
+    let navQueued = false;
+    const updateNav = () => {
+      navQueued = false;
+      const x = track.scrollLeft, max = maxScroll();
+      btns.forEach((b) => { b.disabled = Number(b.dataset.dir) < 0 ? x <= 2 : x >= max - 2; });
+    };
+    const queueNav = () => { if (!navQueued) { navQueued = true; requestAnimationFrame(updateNav); } };
+    track.addEventListener('scroll', queueNav, { passive: true });
+    addEventListener('resize', queueNav, { passive: true });
+    updateNav();
+
+    btns.forEach((b) => b.addEventListener('click', () => {
+      const s = step();
+      const idx = Math.round(track.scrollLeft / s) + Number(b.dataset.dir);
+      track.scrollTo({ left: Math.max(0, Math.min(idx * s, maxScroll())), behavior: reduceMotion ? 'auto' : 'smooth' });
+    }));
+
+    // Fareyle sürükleyerek kaydırma (dokunmatikte tarayıcının kendi kaydırması çalışır)
+    let dragging = false, moved = false, startX = 0, startScroll = 0, lastDx = 0;
+    track.addEventListener('dragstart', (e) => e.preventDefault());
+    track.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      dragging = true; moved = false; startX = e.clientX; startScroll = track.scrollLeft; lastDx = 0;
+    });
+    addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 5) { moved = true; track.classList.add('is-dragging'); clearTilt(); }
+      if (moved) { lastDx = dx; track.scrollLeft = startScroll - dx; }
+    });
+    addEventListener('pointerup', () => {
+      if (!dragging) return;
+      dragging = false;
+      if (!moved) return;
+      track.classList.remove('is-dragging');
+      // En yakın karta yumuşakça otur (hızlı çekişte çekilen yöne)
+      const s = step(), pos = track.scrollLeft / s;
+      const idx = lastDx < -40 ? Math.ceil(pos) : lastDx > 40 ? Math.floor(pos) : Math.round(pos);
+      track.scrollTo({ left: Math.min(idx * s, maxScroll()), behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+    // Sürükleme sonrası yanlışlıkla linke tıklanmasın
+    track.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+
+    // Fareyi takip eden 3D eğilme + parıltı (yalnızca fare olan cihazlarda)
+    let activeCard = null;
+    function clearTilt() {
+      if (!activeCard) return;
+      activeCard.classList.remove('is-tilting');
+      activeCard.style.setProperty('--rx', '0deg');
+      activeCard.style.setProperty('--ry', '0deg');
+      activeCard.style.setProperty('--tx', '0px');
+      activeCard.style.setProperty('--ty', '0px');
+      activeCard = null;
+    }
+    if (finePointer && !reduceMotion) {
+      let tiltQueued = false, px = 0, py = 0;
+      const applyTilt = () => {
+        tiltQueued = false;
+        if (!activeCard || dragging) return;
+        const r = activeCard.getBoundingClientRect();
+        const nx = (px - r.left) / r.width, ny = (py - r.top) / r.height; // 0..1
+        const dx = nx - 0.5, dy = ny - 0.5;
+        activeCard.style.setProperty('--ry', (dx * 12).toFixed(2) + 'deg');
+        activeCard.style.setProperty('--rx', (-dy * 10).toFixed(2) + 'deg');
+        activeCard.style.setProperty('--tx', (dx * 14).toFixed(1) + 'px');
+        activeCard.style.setProperty('--ty', (dy * 10).toFixed(1) + 'px');
+        activeCard.style.setProperty('--mx', (nx * 100).toFixed(1) + '%');
+        activeCard.style.setProperty('--my', (ny * 100).toFixed(1) + '%');
+      };
+      track.addEventListener('pointermove', (e) => {
+        if (e.pointerType !== 'mouse' || dragging) return;
+        const card = e.target.closest('.ref');
+        if (card !== activeCard) { clearTilt(); activeCard = card; if (card) card.classList.add('is-tilting'); }
+        px = e.clientX; py = e.clientY;
+        if (!tiltQueued) { tiltQueued = true; requestAnimationFrame(applyTilt); }
+      });
+      track.addEventListener('pointerleave', clearTilt);
+    }
+  }
+
   /* =========================================================
      3D YAZICI ANİMASYONU
      ========================================================= */

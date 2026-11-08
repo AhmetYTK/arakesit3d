@@ -217,7 +217,7 @@
         </header>
       </div>
 
-      <div class="refs" tabindex="0" role="region" aria-label="Referans projeler, yatay kaydırılabilir">
+      <div class="refs" id="refs-track" tabindex="0" role="region" aria-label="Referans projeler, yatay kaydırılabilir">
         <article class="ref">
           <div class="ref__art ref__art--a"><svg viewBox="0 0 200 140" aria-hidden="true"><use href="#iso-tower"/></svg></div>
           <div class="ref__body">
@@ -278,6 +278,15 @@
           <strong>Tüm işler<br>Instagram'da</strong>
           <span>@arakesit3d ›</span>
         </a>
+      </div>
+
+      <div class="wrap refs__nav">
+        <button class="refs__btn" type="button" data-dir="-1" aria-label="Önceki referanslar" aria-controls="refs-track">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <button class="refs__btn" type="button" data-dir="1" aria-label="Sonraki referanslar" aria-controls="refs-track">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
       </div>
     </section>
 
