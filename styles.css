@@ -318,6 +318,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .ref__art--b { background: linear-gradient(160deg, #3a2a12, #120c05); color: #ffb340; }
 .ref__art--c { background: linear-gradient(160deg, #1e2a3a, #0a0f16); color: #8ec5ff; }
 .ref__art--d { background: linear-gradient(160deg, #2e1f33, #0f0a12); color: #e3b5f0; }
+.ref__art--e { background: linear-gradient(160deg, #1b3326, #09120d); color: #7ee2b8; }
 .ref__body { padding: 24px 26px 28px; display: grid; gap: 10px; flex: 1; align-content: start; }
 .ref__meta { font-size: 13px; color: #86868b; }
 .ref h3 { font-size: 24px; }
