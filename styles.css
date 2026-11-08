@@ -220,12 +220,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   background: #fff; border-radius: var(--radius);
   padding: 36px 32px; display: flex; flex-direction: column; gap: 10px;
   box-shadow: 0 1px 0 rgba(0,0,0,.03);
-  /* MANDATORY: Apply identity transformations for properties that will change on state changes */
-  scale: 1;
-  transition: scale .5s var(--ease), box-shadow .5s var(--ease);
-}
-@media (hover: hover) {
-  .card:hover { scale: 1.015; box-shadow: 0 20px 50px -20px rgba(0,0,0,.18); }
 }
 .card h3 { font-size: 24px; }
 .card p { color: var(--gray-3); }
@@ -356,32 +350,39 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .refs__btn:not(:disabled):hover { background: rgba(255, 255, 255, .22); scale: 1.06; }
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .ref {
+  .ref, .card {
     position: relative;
     transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(var(--s, 1));
     transition: transform .7s var(--ease), box-shadow .7s var(--ease);
   }
-  .ref__art svg {
+  .ref__art svg, .card__art, .card__icon {
     translate: var(--tx, 0px) var(--ty, 0px);
     scale: 1;
     transition: translate .7s var(--ease), scale .7s var(--ease);
   }
-  .ref.is-tilting {
-    --s: 1.025;
+  .ref.is-tilting, .card.is-tilting {
+    --s: 1.022;
     transition: transform .15s ease-out, box-shadow .4s var(--ease);
-    box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .9);
     z-index: 1;
   }
-  .ref.is-tilting .ref__art svg {
+  .card--xl.is-tilting { --s: 1.014; }
+  .ref.is-tilting { box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .9); }
+  .card.is-tilting { box-shadow: 0 26px 56px -22px rgba(0, 0, 0, .22); }
+  .card--dark.is-tilting { box-shadow: 0 30px 64px -24px rgba(0, 0, 0, .55); }
+  .ref.is-tilting .ref__art svg,
+  .card.is-tilting .card__art,
+  .card.is-tilting .card__icon {
     scale: 1.05;
     transition: translate .15s ease-out, scale .4s var(--ease);
   }
-  .ref::after {
+  .ref::after, .card::after {
     content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .16), transparent 55%);
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), var(--glare, rgba(255, 255, 255, .16)), transparent 58%);
     opacity: 0; transition: opacity .5s var(--ease);
   }
-  .ref.is-tilting::after { opacity: 1; }
+  .card { --glare: rgba(255, 159, 10, .1); }
+  .card--dark, .card--accent { --glare: rgba(255, 255, 255, .16); }
+  .ref.is-tilting::after, .card.is-tilting::after { opacity: 1; }
 }
 
 /* ---------- FAQ ---------- */
